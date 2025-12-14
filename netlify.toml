@@ -1,14 +1,13 @@
 [build]
-  publish = "frontend/.next"
-  command = "cd frontend && npm run build"
+  base = "frontend"
+  publish = ".next"
+  command = "npm install && npm run build"
 
 [build.environment]
   NODE_VERSION = "18"
+  NEXT_PUBLIC_API_URL = "https://chef-garage-system.onrender.com"
 
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
-
-[context.production.environment]
-  NEXT_PUBLIC_API_URL = "https://your-backend-url.railway.app"
