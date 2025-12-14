@@ -1,11 +1,8 @@
 [build]
   base = "frontend"
-  publish = ".next"
+  publish = "frontend/out"
   command = "npm install && npm run build"
 
 [build.environment]
   NODE_VERSION = "18"
   NEXT_PUBLIC_API_URL = "https://chef-garage-system.onrender.com"
-
-[[plugins]]
-  package = "@netlify/plugin-nextjs"
