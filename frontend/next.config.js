@@ -1,10 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
-  trailingSlash: true,
   images: {
     domains: ['cdn.brandfetch.io'],
-    unoptimized: true
   },
   experimental: {
     esmExternals: 'loose',
