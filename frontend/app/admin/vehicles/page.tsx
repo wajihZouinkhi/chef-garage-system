@@ -79,7 +79,7 @@ export default function VehiclesPage() {
   const fetchVehicles = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:3001/vehicles', {
+      const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/vehicles`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setVehicles(response.data);
@@ -92,7 +92,7 @@ export default function VehiclesPage() {
     e.preventDefault();
     try {
       const token = localStorage.getItem('token');
-      await axios.post('http://localhost:3001/vehicles', formData, {
+      await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/vehicles`, formData, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setDialogOpen(false);
@@ -122,7 +122,7 @@ export default function VehiclesPage() {
     
     try {
       const token = localStorage.getItem('token');
-      await axios.delete(`http://localhost:3001/vehicles/${vehicleToDelete}`, {
+      await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/vehicles/${vehicleToDelete}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setAlert({ type: 'success', message: 'Vehicle deleted successfully!' });

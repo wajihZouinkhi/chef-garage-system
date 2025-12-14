@@ -38,9 +38,9 @@ export default function AdminDashboard() {
       const headers = { Authorization: `Bearer ${token}` };
       
       const [vehiclesRes, maintenanceRes, staffRes] = await Promise.all([
-        axios.get('http://localhost:3001/vehicles', { headers }),
-        axios.get('http://localhost:3001/maintenance', { headers }),
-        axios.get('http://localhost:3001/staff', { headers })
+        axios.get(`${process.env.NEXT_PUBLIC_API_URL}/vehicles`, { headers }),
+        axios.get(`${process.env.NEXT_PUBLIC_API_URL}/maintenance`, { headers }),
+        axios.get(`${process.env.NEXT_PUBLIC_API_URL}/staff`, { headers })
       ]);
 
       setVehicles(vehiclesRes.data);

@@ -113,7 +113,7 @@ export default function VehicleDetailPage() {
   const fetchVehicle = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get(`http://localhost:3001/vehicles/${vehicleId}`, {
+      const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/vehicles/${vehicleId}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setVehicle(response.data);
@@ -125,7 +125,7 @@ export default function VehicleDetailPage() {
   const fetchMaintenanceLogs = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get(`http://localhost:3001/maintenance?vehicleId=${vehicleId}`, {
+      const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/maintenance?vehicleId=${vehicleId}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setMaintenanceLogs(response.data);
@@ -137,7 +137,7 @@ export default function VehicleDetailPage() {
   const fetchStaff = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:3001/staff', {
+      const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/staff`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setStaff(response.data);
@@ -162,7 +162,7 @@ export default function VehicleDetailPage() {
     
     try {
       const token = localStorage.getItem('token');
-      await axios.delete(`http://localhost:3001/maintenance/${logToDelete}`, {
+      await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/maintenance/${logToDelete}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setAlert({ type: 'success', message: 'Maintenance record deleted successfully!' });
@@ -253,7 +253,7 @@ export default function VehicleDetailPage() {
     console.log('Submitting form...');
     try {
       const token = localStorage.getItem('token');
-      await axios.post('http://localhost:3001/maintenance', {
+      await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/maintenance`, {
         ...formData,
         vehicleId,
         mechanicName: selectedStaff.join(', '), // Join multiple staff names

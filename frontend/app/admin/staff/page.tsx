@@ -58,7 +58,7 @@ export default function StaffPage() {
   const fetchStaff = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:3001/staff', {
+      const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/staff`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setStaff(response.data);
@@ -71,7 +71,7 @@ export default function StaffPage() {
     e.preventDefault();
     try {
       const token = localStorage.getItem('token');
-      await axios.post('http://localhost:3001/staff', formData, {
+      await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/staff`, formData, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setDialogOpen(false);
@@ -101,7 +101,7 @@ export default function StaffPage() {
     
     try {
       const token = localStorage.getItem('token');
-      await axios.delete(`http://localhost:3001/staff/${staffToDelete}`, {
+      await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/staff/${staffToDelete}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setAlert({ type: 'success', message: 'Staff member deleted successfully!' });

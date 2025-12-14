@@ -152,7 +152,7 @@ export default function VehicleHistoryPage() {
         throw new Error('No authentication token found');
       }
       
-      const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001'}/vehicles/${vehicleId}`, {
+      const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/vehicles/${vehicleId}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setVehicle(response.data);
@@ -176,7 +176,7 @@ export default function VehicleHistoryPage() {
         throw new Error('No authentication token found');
       }
       
-      const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001'}/maintenance?vehicleId=${vehicleId}`, {
+      const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/maintenance?vehicleId=${vehicleId}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setMaintenanceLogs(response.data);
@@ -198,7 +198,7 @@ export default function VehicleHistoryPage() {
         throw new Error('No authentication token found');
       }
       
-      const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001'}/staff`, {
+      const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/staff`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setStaff(response.data);
