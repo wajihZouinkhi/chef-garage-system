@@ -53,7 +53,7 @@ export default function RegisterPage() {
     setLoading(true);
 
     try {
-      await axios.post('http://localhost:3001/auth/register', {
+      await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/auth/register`, {
         email,
         username,
         password,
